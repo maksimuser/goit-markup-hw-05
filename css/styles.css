@@ -123,9 +123,10 @@ img {
 
 	width: 100%;
 	height: 4px;
-
-	background: #2196f3;
+	/* transform: scaleX(0); */
+	background-color: #2196f3;
 	border-radius: 2px;
+	transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .site-nav .link {
@@ -139,10 +140,7 @@ img {
 	line-height: 1.14;
 	letter-spacing: 0.02em;
 	color: var(--secondary-text-color);
-
-	transition-property: color;
-	transition-duration: 250ms;
-	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .site-nav .link:hover::after,
@@ -291,37 +289,6 @@ img {
 	border-radius: 4px;
 }
 
-/* 
-.list-features .item::before {
-	display: block;
-	height: 120px;
-	content: "";
-	background-size: 70px 70px;
-	background-repeat: no-repeat;
-	background-position: center;
-	margin-bottom: 30px;
-	background-color: var(--grey-bg-color);
-}
-
-/* можно через классы: задаем li класс icon-"*****" и 
-прописываем bg-i: url ("") */
-/* .icon-antenna::before {
-	background-image: url("../images/icon/antenna.svg");
-} */
-
-/* .features-list .item:nth-child(1)::before {
-	background-image: url("../images/icon/antenna.svg");
-}
-
-.features-list .item:nth-child(2)::before {
-	background-image: url("../images/icon/clock.svg");
-}
-.features-list .item:nth-child(3)::before {
-	background-image: url("../images/icon/diagram.svg");
-}
-.features-list .item:nth-child(4)::before {
-	background-image: url("../images/icon/astronaut.svg");
-} */
 .list-features .item {
 	width: calc((100% - 3 * 30px) / 4);
 	margin-right: 30px;
@@ -520,31 +487,6 @@ img {
 	fill: var(--accent-color);
 }
 
-/* .item-social::before {
-	display: block;
-	display: flex;
-	flex-direction: row;
-	content: "";
-	height: 44px;
-	border: 2px solid red;
-	background-size: 44px 44px;
-	background-repeat: no-repeat;
-	background-position: center;
-}
-
-.item-social:nth-child(1)::before {
-	background-image: url("../images/icon/icon_socialnetworks/Instagram.svg");
-}
-.item-social:nth-child(2)::before {
-	background-image: url("../images/icon/icon_socialnetworks/Twitter.svg");
-}
-.item-social:nth-child(3)::before {
-	background-image: url("../images/icon/icon_socialnetworks/Facebook.svg");
-}
-.item-social:nth-child(4)::before {
-	background-image: url("../images/icon/icon_socialnetworks/LinkedIn.svg");
-} */
-
 /* FOOTER */
 .footer {
 	background-color: var(--secondary-bg-color);
@@ -663,11 +605,17 @@ img {
 	background-color: rgba(0, 0, 0, 0.2);
 	width: 100%;
 	height: 100%;
+	opacity: 1;
+	transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .backdrop.is-hidden {
 	opacity: 0;
 	pointer-events: none;
+}
+
+.backdrop.is-hidden .modal {
+	transform: translate(-50%, -90%) scale(0.1);
 }
 
 .modal {
@@ -678,29 +626,28 @@ img {
 	min-height: 521px;
 	top: 50%;
 	left: 50%;
-	transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%) scale(1);
 
 	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
 	border-radius: 4px;
 
-	background-color: var(--primary-white-color);
+	background: var(--primary-white-color);
+	transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.modal .icon-close {
+.close {
 	width: 30px;
 	height: 30px;
 
 	margin-top: 8px;
 	margin-right: 8px;
 	padding: 0;
-
-	background-color: var(--primary-white-color);
+	background-image: url("../images/sprite.svg#icon-vector");
+	background-repeat: no-repeat;
+	background-position: center;
+	/* background-color: gray; */
 	border: 1px solid rgba(0, 0, 0, 0.1);
 	border-radius: 50%;
-	background-image: url(../images/sprite.svg#icon-close);
-
-	background-position: center;
-	background-repeat: no-repeat;
 }
 
 /* PORTFOLIO.html */
@@ -814,9 +761,6 @@ img {
 	width: 100%;
 	height: 100%;
 
-	transform: translateY(100%);
-	transition: transform 250ms ease;
-
 	margin: 0;
 	padding: 63px 24px;
 	background: rgba(33, 150, 243, 0.9);
@@ -827,9 +771,8 @@ img {
 
 	color: var(--primary-white-color);
 
-	transition-property: transform;
-	transition-duration: 250ms;
-	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	transform: translateY(100%);
+	transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .list-porfolio .item:hover .desc {
